@@ -182,7 +182,7 @@ DB_NAME=air_quality_db
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/aerotrack-air-quality-dashboard.git
+git clone https://github.com/mani-dev-25/aerotrack.git
 ```
 
 ---
