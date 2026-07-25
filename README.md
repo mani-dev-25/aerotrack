@@ -242,7 +242,21 @@ http://localhost:3000
 | Above 150 | 🔴 Danger |
 
 ---
+## 🎥 Project Demo
 
+Watch the complete project demonstration on YouTube:
+
+▶️ **[AeroTrack - Air Quality Monitoring Dashboard Demo](https://youtu.be/cubU77PMZHI)**
+
+This demo showcases:
+- Dashboard overview
+- Air quality statistics
+- PM2.5 trend chart
+- Manual reading entry
+- Search and filtering
+- Sensor simulation
+- Testing and validation features
+---
 ## 📸 Application Preview
 
 | Dashboard | Air Quality Trend |
@@ -364,7 +378,8 @@ This project demonstrates:
 
 Computer Science Engineering Student
 
-GitHub: https://github.com/mani-dev-25
+- 💼 GitHub: https://github.com/mani-dev-25
+- 🎥 Project Demo: https://youtu.be/cubU77PMZHI
 
 ---
 
