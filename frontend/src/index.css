@@ -1,0 +1,309 @@
+/* frontend/src/index.css */
+/* AeroTrack - Modern SaaS Air Quality Dashboard Stylesheet */
+
+:root {
+  /* Theme Palette */
+  --primary-color: #2563EB;
+  --primary-hover: #1D4ED8;
+  --success-color: #22C55E;
+  --warning-color: #F59E0B;
+  --danger-color: #EF4444;
+  --bg-color: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --border-color: rgba(226, 232, 240, 0.8);
+  --card-radius: 16px;
+  --btn-radius: 12px;
+  
+  /* Status Colors */
+  --status-good-bg: rgba(34, 197, 94, 0.1);
+  --status-good-text: #16A34A;
+  --status-good-border: rgba(34, 197, 94, 0.2);
+  
+  --status-moderate-bg: rgba(245, 158, 11, 0.1);
+  --status-moderate-text: #D97706;
+  --status-moderate-border: rgba(245, 158, 11, 0.2);
+  
+  --status-unhealthy-bg: rgba(249, 115, 22, 0.1); /* orange/unhealthy */
+  --status-unhealthy-text: #EA580C;
+  --status-unhealthy-border: rgba(249, 115, 22, 0.2);
+  
+  --status-danger-bg: rgba(239, 68, 68, 0.1);
+  --status-danger-text: #DC2626;
+  --status-danger-border: rgba(239, 68, 68, 0.2);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color) !important;
+  color: var(--text-main);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Glassmorphism inspired Premium Dashboard Card styling */
+.dashboard-card {
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -3px rgba(37, 99, 235, 0.08), 0 4px 8px -2px rgba(37, 99, 235, 0.04) !important;
+}
+
+/* Soft, modern premium badges */
+.badge-status {
+  padding: 0.4em 0.9em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 50rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.2s ease;
+}
+
+.badge-status-good {
+  background-color: var(--status-good-bg);
+  color: var(--status-good-text);
+  border-color: var(--status-good-border);
+}
+
+.badge-status-moderate {
+  background-color: var(--status-moderate-bg);
+  color: var(--status-moderate-text);
+  border-color: var(--status-moderate-border);
+}
+
+.badge-status-unhealthy {
+  background-color: var(--status-unhealthy-bg);
+  color: var(--status-unhealthy-text);
+  border-color: var(--status-unhealthy-border);
+}
+
+.badge-status-danger {
+  background-color: var(--status-danger-bg);
+  color: var(--status-danger-text);
+  border-color: var(--status-danger-border);
+}
+
+/* Custom indicator dot inside status badges */
+.badge-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: currentColor;
+}
+
+/* Premium Rounded Table Overrides */
+.table-responsive-custom {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.table-custom {
+  margin-bottom: 0;
+}
+
+.table-custom th {
+  background-color: #F8FAFC !important;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.table-custom td {
+  padding: 1.2rem 1.5rem;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5) !important;
+}
+
+.table-custom tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.table-custom tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.table-custom tbody tr:hover {
+  background-color: rgba(37, 99, 235, 0.02) !important;
+}
+
+/* Rounded Cards Container for details */
+.card-details {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: #F8FAFC;
+}
+
+/* Styling for Form Controls */
+.form-control-custom {
+  border-radius: var(--btn-radius) !important;
+  border: 1px solid rgba(226, 232, 240, 1) !important;
+  padding: 0.75rem 1rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  font-size: 0.9rem !important;
+  background-color: #FFFFFF;
+}
+
+.form-control-custom:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+  outline: none;
+}
+
+.input-icon-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon-group i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  z-index: 10;
+}
+
+.input-icon-group .form-control-custom,
+.input-icon-group .form-select {
+  padding-left: 2.75rem !important;
+}
+
+.btn-custom {
+  border-radius: var(--btn-radius) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid transparent;
+}
+
+.btn-custom:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.btn-custom:active {
+  transform: translateY(0);
+}
+
+.btn-primary-custom {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--primary-hover) !important;
+  color: white !important;
+}
+
+/* Pulse animation for Live simulator indicators */
+.pulse-live {
+  width: 8px;
+  height: 8px;
+  background-color: var(--success-color);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Skeleton Loading styles */
+.skeleton-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+}
+
+.skeleton-box {
+  display: inline-block;
+  height: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #E2E8F0;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.5s infinite;
+  content: '';
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
