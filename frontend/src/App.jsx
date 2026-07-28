@@ -160,7 +160,16 @@ export default function App() {
     }, 4000);
   };
 
-  const hasDangerLevel = readings.some(r => r.level === 'Danger');
+  // Calculate streak of consecutive unhealthy readings (PM > 150) to prevent false alarms
+  let unhealthyStreak = 0;
+  for (let i = 0; i < readings.length; i++) {
+    if (readings[i].pm_value > 150) {
+      unhealthyStreak++;
+    } else {
+      break; // Reset/Stop counting when a normal reading appears
+    }
+  }
+  const isAlarmActive = unhealthyStreak >= 3;
 
   return (
     <Router>
@@ -175,7 +184,14 @@ export default function App() {
               
               {/* Page Title Block */}
               <div className="d-flex flex-column mb-4 animate-fade-in">
-                <h3 className="fw-bold text-dark mb-1">{greeting} 👋</h3>
+                <div className="d-flex justify-content-between align-items-center mb-1">
+                  <h3 className="fw-bold text-dark mb-0">{greeting} 👋</h3>
+                  <div className="d-flex align-items-center gap-2 bg-white px-3 py-2 rounded-pill shadow-sm border">
+                    <i className="bi bi-wind text-primary"></i>
+                    <span className="fw-medium text-secondary">Average PM:</span>
+                    <span className="fw-bold text-dark">{stats.averagePm}</span>
+                  </div>
+                </div>
                 <p className="text-secondary mb-0">Monitor neighbourhood air quality in real time.</p>
               </div>
 
@@ -192,15 +208,15 @@ export default function App() {
                 </div>
               )}
 
-              {/* Danger pollution alert banner (if any locality has Danger status) */}
-              {hasDangerLevel && !serverError && (
+              {/* Danger pollution alert banner */}
+              {isAlarmActive && !serverError && (
                 <div className="alert alert-warning border-0 shadow-sm rounded-4 p-4 mb-4 d-flex align-items-center gap-3 animate-fade-in" style={{ backgroundColor: 'rgba(239, 68, 68, 0.08)' }}>
                   <div className="bg-danger bg-opacity-10 p-3 rounded-circle text-danger shadow-sm">
                     <i className="bi bi-exclamation-triangle-fill fs-4"></i>
                   </div>
                   <div>
-                    <h6 className="fw-bold mb-1 text-danger">High Pollution Alert (Danger Zones Detected)</h6>
-                    <p className="mb-0 small text-dark opacity-75">One or more localities are reporting hazardous air quality levels (PM &gt; 200). Wearing masks outdoors is recommended.</p>
+                    <h6 className="fw-bold mb-1 text-danger">High Pollution Alert (Sustained Danger Detected)</h6>
+                    <p className="mb-0 small text-dark opacity-75">Sustained hazardous air quality levels detected ({unhealthyStreak} consecutive readings PM &gt; 150). Wearing masks outdoors is recommended.</p>
                   </div>
                 </div>
               )}
